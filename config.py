@@ -20,6 +20,13 @@ DB_PATH = DATA_DIR / "video_registry.json"
 
 # API Keys & Credentials
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
+try:
+    import streamlit as st
+    if hasattr(st, "secrets") and "GEMINI_API_KEY" in st.secrets:
+        GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
+except Exception:
+    pass
+
 YOUTUBE_CLIENT_SECRET_FILE = os.getenv("YOUTUBE_CLIENT_SECRET_FILE", str(BASE_DIR / "client_secret.json"))
 YOUTUBE_TOKEN_FILE = os.getenv("YOUTUBE_TOKEN_FILE", str(BASE_DIR / "token.pickle"))
 

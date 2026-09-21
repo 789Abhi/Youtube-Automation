@@ -581,17 +581,45 @@ with tab_settings:
                 st.rerun()
     else:
         st.warning("⚠️ No channel authenticated yet.")
-        if Path(YOUTUBE_CLIENT_SECRET_FILE).exists():
+        
+        # Check client_secret.json
+        if not Path(YOUTUBE_CLIENT_SECRET_FILE).exists():
+            st.error("❌ `client_secret.json` is missing on this cloud instance.")
+            st.markdown("Upload your `client_secret.json` file to enable YouTube features:")
+            uploaded_secret = st.file_uploader("Upload client_secret.json", type=["json"], key="up_secret_file")
+            if uploaded_secret is not None:
+                with open(YOUTUBE_CLIENT_SECRET_FILE, "wb") as f:
+                    f.write(uploaded_secret.getbuffer())
+                st.success("✓ `client_secret.json` uploaded successfully!")
+                st.rerun()
+
+        # Check token.pickle (Direct cloud sync without OAuth loops!)
+        if not Path(YOUTUBE_TOKEN_FILE).exists():
+            st.info("💡 **Quick Cloud Connect**: If you already authorized locally on your PC, upload your `token.pickle`:")
+            uploaded_token = st.file_uploader("Upload token.pickle (from D:\\youtube_video_automation\\token.pickle)", type=["pickle"], key="up_token_file")
+            if uploaded_token is not None:
+                with open(YOUTUBE_TOKEN_FILE, "wb") as f:
+                    f.write(uploaded_token.getbuffer())
+                st.success("✓ `token.pickle` uploaded successfully! Channel connected.")
+                st.rerun()
+
+        if Path(YOUTUBE_CLIENT_SECRET_FILE).exists() and not Path(YOUTUBE_TOKEN_FILE).exists():
             st.success("✓ `client_secret.json` is installed.")
             if st.button("🔑 Connect YouTube Channel Now", type="primary"):
                 st.session_state["show_auth_panel"] = True
                 start_nonblocking_oauth()
                 st.rerun()
-        else:
-            st.error("`client_secret.json` not found.")
 
     st.markdown("### 2. Google Gemini & Veo API")
     if GEMINI_API_KEY:
         st.success(f"✓ Google AI API Key configured (`{GEMINI_API_KEY[:6]}...{GEMINI_API_KEY[-4:]}`)")
     else:
         st.error("Google AI API key not set.")
+        st.markdown("Set `GEMINI_API_KEY` in Streamlit Cloud Secrets or in `.env`.")
+        input_key = st.text_input("Or enter Gemini API Key temporarily:", type="password")
+        if st.button("Save API Key"):
+            if input_key.strip():
+                with open(BASE_DIR / ".env", "a") as f:
+                    f.write(f"\nGEMINI_API_KEY={input_key.strip()}\n")
+                st.success("Saved! Reloading...")
+                st.rerun()
