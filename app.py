@@ -285,7 +285,67 @@ with tab_create:
         )
 
     st.write("")
-    generate_btn = st.button("✨ Generate AI Video", type="primary", use_container_width=True)
+    col_btn1, col_btn2 = st.columns(2)
+    with col_btn1:
+        storyboard_btn = st.button("🎬 Generate Script for Google Flow / Veo AI", type="primary", use_container_width=True)
+    with col_btn2:
+        generate_btn = st.button("✨ Render Automated Video Here", use_container_width=True)
+
+    if storyboard_btn:
+        if not topic.strip():
+            st.error("Please enter a video topic or concept to proceed.")
+        else:
+            with st.spinner("Generating cinematic movie script & Google Flow prompts with Gemini..."):
+                try:
+                    script_data = generate_video_script(topic.strip(), format_type=format_choice)
+                    st.session_state["active_storyboard"] = script_data
+                except Exception as e:
+                    st.error(f"Failed to generate script: {e}")
+
+    if st.session_state.get("active_storyboard"):
+        sb = st.session_state["active_storyboard"]
+        st.success(f"🎬 Movie Storyboard Ready: **{sb.get('title')}**")
+
+        st.markdown("""
+        <div style="background-color:#1e1b4b; border:1px solid #6366f1; border-radius:10px; padding:15px; margin-bottom:15px;">
+            <h4 style="margin:0; color:#fff;">👉 Google Flow AI Workflow:</h4>
+            <ol style="margin-top:8px; margin-bottom:0; color:#cbd5e1; font-size:14px;">
+                <li>Copy each scene's <b>Veo Visual Prompt</b> into <a href="https://labs.google" target="_blank" style="color:#a5b4fc; font-weight:bold;">Google Flow (labs.google)</a> to generate high-fidelity Veo video clips.</li>
+                <li>Download your finished video from Google Flow.</li>
+                <li>Go to the <b>📤 Manual Video Upload</b> tab right here to publish it directly to your <b>Untold Yugas</b> YouTube channel!</li>
+            </ol>
+        </div>
+        """, unsafe_allow_html=True)
+
+        col_sb1, col_sb2 = st.columns([3, 2])
+        with col_sb1:
+            st.subheader("Scene-by-Scene Storyboard")
+            for sc in sb.get("scenes", []):
+                with st.container():
+                    st.markdown(f"##### Scene {sc.get('scene_number')} (~{sc.get('estimated_duration_sec', 5)}s)")
+                    st.code(sc.get("visual_prompt"), language="text")
+                    st.caption(f"🎙️ **Narration**: {sc.get('narration')}")
+                    st.divider()
+
+        with col_sb2:
+            st.subheader("SEO Metadata for YouTube")
+            st.text_input("Title", sb.get("title", ""))
+            st.text_area("Description", sb.get("description", ""), height=180)
+            st.text_input("Tags", ", ".join(sb.get("tags", [])))
+
+            formatted_text = f"TITLE: {sb.get('title')}\n\nDESCRIPTION:\n{sb.get('description')}\n\nTAGS: {', '.join(sb.get('tags', []))}\n\n" + "="*50 + "\nSTORYBOARD SCENES FOR GOOGLE FLOW / VEO\n" + "="*50 + "\n"
+            for sc in sb.get("scenes", []):
+                formatted_text += f"\n--- SCENE {sc.get('scene_number')} (~{sc.get('estimated_duration_sec', 5)}s) ---\n"
+                formatted_text += f"GOOGLE VEO VISUAL PROMPT:\n{sc.get('visual_prompt')}\n\n"
+                formatted_text += f"NARRATION / DIALOGUE:\n\"{sc.get('narration')}\"\n"
+
+            st.download_button(
+                "📥 Download Storyboard (.txt)",
+                data=formatted_text,
+                file_name=f"google_flow_storyboard_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt",
+                mime="text/plain",
+                use_container_width=True
+            )
 
     if generate_btn:
         if not topic.strip():

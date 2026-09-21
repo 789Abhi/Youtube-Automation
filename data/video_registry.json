@@ -1,3 +1,112 @@
 {
-  "videos": []
+  "videos": [
+    {
+      "id": "vid_20260921_144041_1226",
+      "topic": "The 4 Yugas explained",
+      "format": "shorts",
+      "voice": "en-US-ChristopherNeural",
+      "title": "The 4 Cosmic Ages of Humanity ⏳ (Are We in the End Times?)",
+      "description": "We are living in the final, darkest age of cosmic history. Discover the mind-bending prophecy of the 4 Yugas—from the golden age of gods to the chaotic end times we live in today. Will you survive the final reset? \n\nScene Breakdown:\n1. The Hook: The warning of the final age.\n2. Satya Yuga: The Golden Age of Truth.\n3. Treta & Dwapara: The Age of Heroes and Avatars.\n4. Kali Yuga: Our current Dark Age.\n5. The Prophecy: The arrival of Kalki.\n\n#yugas #hindumyths #cosmology #kalki #ancienthistory #shorts",
+      "tags": [
+        "yugas",
+        "hindumyths",
+        "cosmology",
+        "kalki",
+        "ancienthistory"
+      ],
+      "scenes": [
+        {
+          "scene_number": 1,
+          "narration": "We are living in the final, darkest age of humanity... and our time is rapidly running out.",
+          "visual_prompt": "A colossal, glowing cosmic wheel of time, the Kaalchakra, slowly turning in the deep dark void of space. Volumetric god rays slice through swirling violet nebulae. A hyper-realistic, dramatic close-up of a giant stone-carved face of Lord Shiva, his third eye glowing with a subtle, menacing gold light. 8k resolution, cinematic lighting, vertical 9:16 aspect ratio.",
+          "estimated_duration_sec": 6
+        },
+        {
+          "scene_number": 2,
+          "narration": "It began with Satya Yuga—the Golden Age of absolute truth, where gods walked openly among pure humans.",
+          "visual_prompt": "An ethereal, breathtaking landscape of Satya Yuga. Majestic white marble temples floating on clouds, surrounded by lush golden forests and crystal-clear waterfalls. Divine beings with radiant halos and glowing white robes walking peacefully. Warm, heavenly sunbeams casting a divine glow. Photorealistic, ultra-detailed, cinematic masterpiece.",
+          "estimated_duration_sec": 7
+        },
+        {
+          "scene_number": 3,
+          "narration": "Then came the ages of legends... Treta and Dwapara. Great battles of dharma, fought by avatars with weapons of cosmic power!",
+          "visual_prompt": "A dramatic split-screen cinematic shot. On the left, Lord Rama holding a massive golden bow glowing with divine solar energy. On the right, Lord Krishna on a golden chariot in the dusty Kurukshetra battlefield, his Sudarshana Chakra spinning rapidly on his finger, emitting blinding blue light. Dark stormy sky, swirling embers, epic mythological cinema style.",
+          "estimated_duration_sec": 8
+        },
+        {
+          "scene_number": 4,
+          "narration": "Now, we drown in Kali Yuga—the Age of Darkness. An era of chaos, greed, and the decay of the human soul.",
+          "visual_prompt": "A hyper-realistic, dystopian modern city crumbling under a violent violet lightning storm. A lone, shadowy figure standing on a skyscraper edge, looking down at neon-lit chaotic streets filled with smog. Dark, moody, atmospheric, high-contrast cinematic lighting.",
+          "estimated_duration_sec": 7
+        },
+        {
+          "scene_number": 5,
+          "narration": "But when the darkness reaches its peak... Kalki, the final avatar, will descend to destroy evil and restart the cycle. Are you ready?",
+          "visual_prompt": "A majestic, blazing white stallion galloping down from the swirling cosmic clouds. Atop the horse is the Kalki avatar, clad in glowing golden Vedic armor, unsheathing a fiery sword that cuts through the dark nebulae. Epic, high-budget movie trailer climax, blinding divine light, 8k resolution.",
+          "estimated_duration_sec": 7
+        }
+      ],
+      "audio_path": "D:\\youtube_video_automation\\outputs\\audio\\vid_20260921_144041_1226_master.mp3",
+      "video_path": "D:\\youtube_video_automation\\outputs\\videos\\vid_20260921_144041_1226.mp4",
+      "thumbnail_path": "D:\\youtube_video_automation\\outputs\\videos\\vid_20260921_144041_1226_thumb.png",
+      "status": "draft_ready",
+      "error_message": "",
+      "youtube_id": "",
+      "youtube_url": "",
+      "privacy_status": "unlisted",
+      "created_at": "2026-09-21T14:40:41.977943",
+      "uploaded_at": null
+    },
+    {
+      "id": "vid_20260921_145908_c0c6",
+      "topic": "Kalki Avatar: The Fiery End of Kali Yuga and the Rebirth of the Golden Age",
+      "format": "shorts",
+      "voice": "en-US-ChristopherNeural",
+      "title": "The Mind-Blowing Truth About Kalki Avatar: The Fiery End Of Kali Yuga And The Rebirth Of The Golden Age! 🚀",
+      "description": "Discover the most incredible facts and secrets about Kalki Avatar: The Fiery End of Kali Yuga and the Rebirth of the Golden Age.\n\nSubscribe for more daily AI-powered explorations!\n\n#Shorts #KalkiAvatar:TheFieryEndofKaliYugaandtheRebirthoftheGoldenAge #Facts",
+      "tags": [
+        "kalki avatar: the fiery end of kali yuga and the rebirth of the golden age",
+        "shorts",
+        "educational",
+        "mindblowing",
+        "facts"
+      ],
+      "scenes": [
+        {
+          "scene_number": 1,
+          "narration": "Did you know the untold reality behind Kalki Avatar: The Fiery End of Kali Yuga and the Rebirth of the Golden Age? Most people have it completely backwards!",
+          "visual_prompt": "Dramatic cinematic wide angle establishing shot of Kalki Avatar: The Fiery End of Kali Yuga and the Rebirth of the Golden Age, volumetric cinematic lighting, 4k ultra realistic, smooth camera zoom-in.",
+          "estimated_duration_sec": 6
+        },
+        {
+          "scene_number": 2,
+          "narration": "Here is the crazy part. When scientists and explorers took a closer look, they uncovered something astonishing.",
+          "visual_prompt": "Dynamic rotating camera shot exploring intricate details of Kalki Avatar: The Fiery End of Kali Yuga and the Rebirth of the Golden Age, glowing highlights, cinematic atmosphere.",
+          "estimated_duration_sec": 7
+        },
+        {
+          "scene_number": 3,
+          "narration": "This completely changed how we understand this phenomenon today.",
+          "visual_prompt": "Futuristic holographic breakdown and visual comparison of Kalki Avatar: The Fiery End of Kali Yuga and the Rebirth of the Golden Age, cyberpunk neon aesthetic, seamless motion.",
+          "estimated_duration_sec": 6
+        },
+        {
+          "scene_number": 4,
+          "narration": "Drop a comment below on what you think, and hit follow for more daily insights!",
+          "visual_prompt": "Cinematic outro with particles flowing upward, sunset lighting, vibrant colors.",
+          "estimated_duration_sec": 5
+        }
+      ],
+      "audio_path": "D:\\youtube_video_automation\\outputs\\audio\\vid_20260921_145908_c0c6_master.mp3",
+      "video_path": "",
+      "thumbnail_path": "",
+      "status": "voice_ready",
+      "error_message": "",
+      "youtube_id": "",
+      "youtube_url": "",
+      "privacy_status": "unlisted",
+      "created_at": "2026-09-21T14:59:08.187350",
+      "uploaded_at": null
+    }
+  ]
 }
