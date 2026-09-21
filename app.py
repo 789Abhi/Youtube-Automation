@@ -238,6 +238,7 @@ with tab_create:
     
     col_input, col_config = st.columns([3, 2])
     
+    with col_input:
         sample_topics = [
             "Kalki Avatar: The Fiery End of Kali Yuga and the Rebirth of the Golden Age",
             "The 4 Yugas Explained: From Divine Gods in Satya Yuga to Chaos in Kali Yuga",
