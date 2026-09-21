@@ -86,12 +86,23 @@ def run_video_pipeline(
         _notify(0.50, "Voiceover generated successfully.")
 
         # 4. Video Generation (Scene by Scene)
-        _notify(0.55, "Generating visual scenes with Google Veo / AI Video engine...")
+        _notify(0.55, "Generating photorealistic AI visuals & cinematic scenes...")
         clip_paths = []
         total_scenes = len(scenes)
         for i, scene in enumerate(scenes):
             prompt = scene.get("visual_prompt", f"Cinematic shot of {topic}")
-            dur = scene.get("estimated_duration_sec", 5)
+            narration = scene.get("narration", "")
+            dur = float(scene.get("estimated_duration_sec", 5))
+
+            # Match exact audio length if scene audio exists
+            if i < len(scene_audios) and Path(scene_audios[i]).exists():
+                try:
+                    from moviepy.editor import AudioFileClip
+                    a_clip = AudioFileClip(scene_audios[i])
+                    dur = max(a_clip.duration + 0.3, 3.0)
+                    a_clip.close()
+                except Exception:
+                    pass
             
             scene_pct = 0.55 + (0.25 * (i / max(total_scenes, 1)))
             _notify(scene_pct, f"Generating visual clip {i+1} of {total_scenes}...")
@@ -100,6 +111,7 @@ def run_video_pipeline(
                 video_id=video_id,
                 scene_number=i+1,
                 prompt=prompt,
+                narration_text=narration,
                 format_type=format_type,
                 duration_sec=dur
             )
