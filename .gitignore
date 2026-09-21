@@ -1,0 +1,23 @@
+# Environment variables and API keys
+.env
+
+# Google OAuth Credentials & Tokens (Crucial: Protect your channel access)
+client_secret.json
+token.pickle
+
+# Python compiled bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Generated Video & Audio Outputs (Keep repo lightweight)
+outputs/videos/*.mp4
+outputs/videos/*.png
+outputs/videos/*.jpg
+outputs/audio/*.mp3
+outputs/clips/*.mp4
+
+# OS Files
+.DS_Store
+Thumbs.db

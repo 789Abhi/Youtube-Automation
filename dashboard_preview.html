@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoTube AI - Video Studio & YouTube Publisher</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                        },
+                        darkBg: '#0f172a',
+                        cardBg: '#1e293b',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0b0f19;
+            color: #f8fafc;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+        .glow-border {
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.2);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Top Navigation Bar -->
+    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 to-rose-500 flex items-center justify-center text-white text-xl font-bold shadow-lg shadow-indigo-500/30">
+                    <i class="fa-solid fa-play"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-tight bg-gradient-to-r from-white via-slate-200 to-indigo-300 bg-clip-text text-transparent">AutoTube AI Studio</h1>
+                    <p class="text-xs text-slate-400">Google Veo & Gemini Video Automation Pipeline</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <div class="hidden md:flex items-center px-3 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-xs text-slate-300">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 mr-2 animate-pulse"></span>
+                    Engine: <strong class="ml-1 text-white">Google Veo 3.1 & Gemini 2.5</strong>
+                </div>
+                <a href="http://localhost:8501" target="_blank" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold rounded-lg shadow-md transition flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Live Streamlit App
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-6 py-8 flex-1 w-full space-y-8">
+        
+        <!-- Summary Stat Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div class="p-5 rounded-2xl bg-slate-800/80 border border-slate-700/60 shadow-lg">
+                <div class="flex items-center justify-between">
+                    <span class="text-slate-400 text-xs font-semibold uppercase tracking-wider">Total Generated</span>
+                    <span class="p-2 rounded-lg bg-indigo-500/10 text-indigo-400"><i class="fa-solid fa-film"></i></span>
+                </div>
+                <div class="mt-3 text-3xl font-extrabold text-white">12</div>
+                <div class="mt-1 text-xs text-indigo-300">Automated AI videos</div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-slate-800/80 border border-slate-700/60 shadow-lg">
+                <div class="flex items-center justify-between">
+                    <span class="text-slate-400 text-xs font-semibold uppercase tracking-wider">Uploaded to YouTube</span>
+                    <span class="p-2 rounded-lg bg-emerald-500/10 text-emerald-400"><i class="fa-brands fa-youtube"></i></span>
+                </div>
+                <div class="mt-3 text-3xl font-extrabold text-emerald-400">8</div>
+                <div class="mt-1 text-xs text-emerald-300/80">Live on channel</div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-slate-800/80 border border-slate-700/60 shadow-lg">
+                <div class="flex items-center justify-between">
+                    <span class="text-slate-400 text-xs font-semibold uppercase tracking-wider">Drafts Ready</span>
+                    <span class="p-2 rounded-lg bg-amber-500/10 text-amber-400"><i class="fa-solid fa-clock"></i></span>
+                </div>
+                <div class="mt-3 text-3xl font-extrabold text-amber-400">4</div>
+                <div class="mt-1 text-xs text-amber-300/80">Ready to review & publish</div>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-slate-800/80 border border-slate-700/60 shadow-lg">
+                <div class="flex items-center justify-between">
+                    <span class="text-slate-400 text-xs font-semibold uppercase tracking-wider">API Quota Health</span>
+                    <span class="p-2 rounded-lg bg-cyan-500/10 text-cyan-400"><i class="fa-solid fa-bolt"></i></span>
+                </div>
+                <div class="mt-3 text-3xl font-extrabold text-cyan-400">100%</div>
+                <div class="mt-1 text-xs text-cyan-300/80">Veo & YouTube API ready</div>
+            </div>
+        </div>
+
+        <!-- Quick Action Banner -->
+        <div class="p-6 rounded-2xl bg-gradient-to-r from-indigo-900/40 via-purple-900/30 to-slate-900 border border-indigo-500/30 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div>
+                <h2 class="text-lg font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-wand-magic-sparkles text-indigo-400"></i> Local Studio Installed in D:\ Drive!
+                </h2>
+                <p class="text-sm text-slate-300 mt-1">
+                    Your complete codebase is located at <code class="px-2 py-0.5 rounded bg-slate-950 text-indigo-300 font-mono text-xs">D:\youtube_video_automation</code>. Double-click <code class="px-2 py-0.5 rounded bg-slate-950 text-indigo-300 font-mono text-xs">launch_dashboard.bat</code> anytime to start the live interactive interface.
+                </p>
+            </div>
+            <div class="flex gap-3 shrink-0">
+                <button onclick="document.getElementById('studioSection').scrollIntoView({behavior: 'smooth'})" class="px-4 py-2.5 bg-indigo-600 hover:bg-indigo-500 font-semibold text-white text-sm rounded-xl transition shadow">
+                    Create Video Now
+                </button>
+            </div>
+        </div>
+
+        <!-- Video Library & Management Grid -->
+        <div class="space-y-4">
+            <div class="flex items-center justify-between">
+                <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-list-check text-indigo-400"></i> Video Library & Publishing Status
+                </h3>
+                <div class="flex gap-2">
+                    <button class="px-3 py-1.5 rounded-lg bg-slate-800 text-xs font-semibold text-slate-300 hover:bg-slate-700">All (12)</button>
+                    <button class="px-3 py-1.5 rounded-lg bg-emerald-900/40 text-xs font-semibold text-emerald-300 border border-emerald-800/60">Uploaded (8)</button>
+                    <button class="px-3 py-1.5 rounded-lg bg-amber-900/40 text-xs font-semibold text-amber-300 border border-amber-800/60">Drafts (4)</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Card 1: Uploaded Video -->
+                <div class="rounded-2xl bg-slate-800/90 border border-slate-700 overflow-hidden shadow-xl flex flex-col">
+                    <div class="relative aspect-video bg-slate-950 flex items-center justify-center group overflow-hidden">
+                        <div class="w-full h-full bg-gradient-to-tr from-slate-900 via-indigo-950 to-slate-900 flex items-center justify-center">
+                            <i class="fa-solid fa-circle-play text-5xl text-indigo-400/80 group-hover:scale-110 transition duration-300"></i>
+                        </div>
+                        <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center gap-1.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> UPLOADED
+                        </span>
+                        <span class="absolute bottom-3 left-3 px-2 py-0.5 rounded text-[11px] font-mono bg-black/70 text-slate-200">
+                            9:16 Shorts • 0:38
+                        </span>
+                    </div>
+
+                    <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <h4 class="font-bold text-white text-base line-clamp-1">The Mind-Blowing Truth About Black Holes! 🚀</h4>
+                            <p class="text-xs text-slate-400 mt-1 line-clamp-2">
+                                Discover the terrifying reality behind event horizons and singularity. Scientists just uncovered something wild!
+                            </p>
+                            <div class="mt-3 flex flex-wrap gap-1.5">
+                                <span class="text-[11px] px-2 py-0.5 rounded bg-slate-700/60 text-slate-300">#Shorts</span>
+                                <span class="text-[11px] px-2 py-0.5 rounded bg-slate-700/60 text-slate-300">#Space</span>
+                                <span class="text-[11px] px-2 py-0.5 rounded bg-slate-700/60 text-slate-300">#Science</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-3 border-t border-slate-700/70 flex items-center justify-between">
+                            <a href="https://youtu.be/dQw4w9WgXcQ" target="_blank" class="text-xs text-indigo-400 hover:text-indigo-300 font-semibold flex items-center gap-1">
+                                <i class="fa-brands fa-youtube text-red-500 text-sm"></i> Watch on YouTube
+                            </a>
+                            <span class="text-[11px] text-slate-500">Uploaded Today</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Uploaded Video -->
+                <div class="rounded-2xl bg-slate-800/90 border border-slate-700 overflow-hidden shadow-xl flex flex-col">
+                    <div class="relative aspect-video bg-slate-950 flex items-center justify-center group overflow-hidden">
+                        <div class="w-full h-full bg-gradient-to-tr from-cyan-950 via-slate-900 to-blue-950 flex items-center justify-center">
+                            <i class="fa-solid fa-circle-play text-5xl text-cyan-400/80 group-hover:scale-110 transition duration-300"></i>
+                        </div>
+                        <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center gap-1.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> UPLOADED
+                        </span>
+                        <span class="absolute bottom-3 left-3 px-2 py-0.5 rounded text-[11px] font-mono bg-black/70 text-slate-200">
+                            9:16 Shorts • 0:42
+                        </span>
+                    </div>
+
+                    <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <h4 class="font-bold text-white text-base line-clamp-1">Why 80% of the Ocean Remains Unexplored 🌊</h4>
+                            <p class="text-xs text-slate-400 mt-1 line-clamp-2">
+                                Deep sea hydrothermal vents and strange glowing creatures in the abyss.
+                            </p>
+                            <div class="mt-3 flex flex-wrap gap-1.5">
+                                <span class="text-[11px] px-2 py-0.5 rounded bg-slate-700/60 text-slate-300">#Ocean</span>
+                                <span class="text-[11px] px-2 py-0.5 rounded bg-slate-700/60 text-slate-300">#Mystery</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-3 border-t border-slate-700/70 flex items-center justify-between">
+                            <a href="https://youtu.be/dQw4w9WgXcQ" target="_blank" class="text-xs text-indigo-400 hover:text-indigo-300 font-semibold flex items-center gap-1">
+                                <i class="fa-brands fa-youtube text-red-500 text-sm"></i> Watch on YouTube
+                            </a>
+                            <span class="text-[11px] text-slate-500">Uploaded Yesterday</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Draft Video (Ready to Upload) -->
+                <div class="rounded-2xl bg-slate-800/90 border border-slate-700 overflow-hidden shadow-xl flex flex-col">
+                    <div class="relative aspect-video bg-slate-950 flex items-center justify-center group overflow-hidden">
+                        <div class="w-full h-full bg-gradient-to-tr from-purple-950 via-slate-900 to-pink-950 flex items-center justify-center">
+                            <i class="fa-solid fa-circle-play text-5xl text-pink-400/80 group-hover:scale-110 transition duration-300"></i>
+                        </div>
+                        <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center gap-1.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span> DRAFT (LOCAL)
+                        </span>
+                        <span class="absolute bottom-3 left-3 px-2 py-0.5 rounded text-[11px] font-mono bg-black/70 text-slate-200">
+                            16:9 Video • 1:12
+                        </span>
+                    </div>
+
+                    <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <h4 class="font-bold text-white text-base line-clamp-1">How Quantum Computing Breaks Cryptography ⚡</h4>
+                            <p class="text-xs text-slate-400 mt-1 line-clamp-2">
+                                Qubits, superposition, and RSA decryption explained simply for everyday creators.
+                            </p>
+                            <div class="mt-3 flex flex-wrap gap-1.5">
+                                <span class="text-[11px] px-2 py-0.5 rounded bg-slate-700/60 text-slate-300">#Quantum</span>
+                                <span class="text-[11px] px-2 py-0.5 rounded bg-slate-700/60 text-slate-300">#Tech</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-3 border-t border-slate-700/70 flex items-center justify-between">
+                            <button onclick="alert('Open launch_dashboard.bat to trigger YouTube OAuth upload!')" class="px-3 py-1.5 bg-rose-600 hover:bg-rose-500 text-white font-semibold text-xs rounded-lg transition flex items-center gap-1.5">
+                                <i class="fa-brands fa-youtube"></i> Upload to YouTube
+                            </button>
+                            <span class="text-[11px] text-amber-400 font-medium">Rendered</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Video Studio Interactive Section -->
+        <div id="studioSection" class="p-8 rounded-3xl bg-slate-800/90 border border-slate-700 shadow-2xl space-y-6">
+            <div class="border-b border-slate-700 pb-4 flex items-center justify-between">
+                <div>
+                    <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-film text-indigo-400"></i> Interactive Video Generator Studio
+                    </h3>
+                    <p class="text-xs text-slate-400 mt-1">Prompt your next video topic to generate scripts, voices, and Veo clips.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Inputs -->
+                <div class="lg:col-span-2 space-y-5">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">
+                            Video Topic / Prompt
+                        </label>
+                        <textarea id="topicInput" rows="3" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3.5 text-sm text-white focus:outline-none focus:border-indigo-500" placeholder="e.g. 3 Astonishing Facts About James Webb Telescope Discoveries..."></textarea>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">Format</label>
+                            <select class="w-full bg-slate-900 border border-slate-700 rounded-xl p-2.5 text-sm text-white focus:outline-none focus:border-indigo-500">
+                                <option>📱 YouTube Shorts (9:16)</option>
+                                <option>🖥️ Standard Video (16:9)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">Narrator Voice</label>
+                            <select class="w-full bg-slate-900 border border-slate-700 rounded-xl p-2.5 text-sm text-white focus:outline-none focus:border-indigo-500">
+                                <option>Christopher (Male, Deep)</option>
+                                <option>Jenny (Female, Warm)</option>
+                                <option>Guy (Male, Casual)</option>
+                                <option>Aria (Female, Clear)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">YouTube Privacy</label>
+                            <select class="w-full bg-slate-900 border border-slate-700 rounded-xl p-2.5 text-sm text-white focus:outline-none focus:border-indigo-500">
+                                <option>Unlisted (Recommended)</option>
+                                <option>Private</option>
+                                <option>Public</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-3 pt-2">
+                        <input type="checkbox" id="autoUp" class="rounded text-indigo-600 focus:ring-indigo-500 bg-slate-900 border-slate-700 h-4 w-4">
+                        <label for="autoUp" class="text-xs text-slate-300">Automatically upload to YouTube immediately after rendering</label>
+                    </div>
+
+                    <button onclick="startDemoGen()" class="w-full py-3.5 bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 hover:from-indigo-500 hover:to-indigo-500 text-white font-bold text-sm rounded-xl shadow-lg shadow-indigo-600/30 transition duration-200">
+                        ✨ Start AI Video Generation
+                    </button>
+                </div>
+
+                <!-- Live Pipeline Visualizer -->
+                <div class="p-5 rounded-2xl bg-slate-900/90 border border-slate-700 flex flex-col justify-between">
+                    <div>
+                        <h4 class="text-sm font-bold text-white mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-network-wired text-indigo-400"></i> Pipeline Stages
+                        </h4>
+                        <div class="space-y-4 text-xs">
+                            <div class="flex items-center gap-3">
+                                <div id="step1" class="w-6 h-6 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400">1</div>
+                                <span class="text-slate-300">Gemini Script Generation</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div id="step2" class="w-6 h-6 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400">2</div>
+                                <span class="text-slate-300">Neural TTS Voice Synthesis</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div id="step3" class="w-6 h-6 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400">3</div>
+                                <span class="text-slate-300">Google Veo Clip Generation</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div id="step4" class="w-6 h-6 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400">4</div>
+                                <span class="text-slate-300">MoviePy Final Audio/Video Render</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div id="step5" class="w-6 h-6 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400">5</div>
+                                <span class="text-slate-300">YouTube API OAuth Upload</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-slate-800 text-center">
+                        <span id="genStatus" class="text-xs text-slate-400">Ready to start pipeline</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-slate-950 py-6 text-center text-xs text-slate-500">
+        AutoTube AI • Created on D:\youtube_video_automation • Powered by Google GenAI & YouTube Data API v3
+    </footer>
+
+    <script>
+        function startDemoGen() {
+            const status = document.getElementById('genStatus');
+            const steps = [
+                { id: 'step1', msg: 'Generating script and Veo prompts...' },
+                { id: 'step2', msg: 'Synthesizing voiceover audio...' },
+                { id: 'step3', msg: 'Generating scene clips with Google Veo...' },
+                { id: 'step4', msg: 'Assembling audio & video...' },
+                { id: 'step5', msg: 'Publishing to YouTube...' }
+            ];
+            
+            let i = 0;
+            const timer = setInterval(() => {
+                if (i > 0) {
+                    document.getElementById(steps[i-1].id).className = "w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center";
+                    document.getElementById(steps[i-1].id).innerHTML = "✓";
+                }
+                if (i < steps.length) {
+                    document.getElementById(steps[i].id).className = "w-6 h-6 rounded-full bg-indigo-600 text-white flex items-center justify-center animate-pulse";
+                    status.innerText = steps[i].msg;
+                    i++;
+                } else {
+                    clearInterval(timer);
+                    status.innerHTML = "<span class='text-emerald-400 font-bold'>✓ Completed! Video ready.</span>";
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
