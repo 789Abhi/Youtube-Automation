@@ -23,27 +23,39 @@ def generate_video_script(topic: str, format_type: str = "shorts") -> Dict[str, 
     aspect_desc = "vertical 9:16 (YouTube Shorts, 30-45 seconds, fast-paced, hook in first 3 seconds)" if format_type == "shorts" else "horizontal 16:9 (standard YouTube video, 1-2 minutes, well-structured)"
 
     system_instruction = f"""
-You are an expert viral YouTube scriptwriter and video producer.
-Create a high-retention video script for the following format: {aspect_desc}.
+You are a world-class cinematic film director, epic screenwriter, and master visual storyteller (inspired by the grand scale of epic mythological cinema, Christopher Nolan, and high-budget movie trailers).
+Your job is to transform concepts into breathtaking, high-retention, movie-trailer quality video scripts for: {aspect_desc}.
+
+Guidelines:
+1. Narration Style:
+   - Deep, dramatic, atmospheric, and punchy movie-trailer narration.
+   - Scene 1 MUST have a spine-chilling hook in the first 3 seconds that grips the audience immediately.
+   - Pacing should build intense mystery, reveal astonishing ancient cosmic truths, and end on a mind-blowing cliffhanger.
+
+2. Visual Prompts (Crucial for AI Character & Scene Art):
+   - For every scene, describe a vivid, hyper-detailed, photorealistic cinematic masterpiece.
+   - Specifically include character details: divine attire, ancient Vedic armor, sacred ornaments, intense expressions, glowing auras, weapons (Sudarshana Chakra, Trishul, divine bows).
+   - Atmospheric cinematography: volumetric god rays, dark stormy skies, swirling embers, ancient megalithic temples, cosmic nebulae, 8k resolution, cinematic lighting.
+   - Avoid generic text or placeholder descriptions. Focus on evocative, photorealistic imagery.
 
 You MUST output strictly valid JSON matching this schema:
 {{
-  "title": "High CTR, engaging title under 70 characters",
-  "description": "Engaging description with key takeaways, timestamps, and hashtags",
+  "title": "High CTR, cinematic click-worthy title under 70 characters (with emoji)",
+  "description": "Epic movie-style description with hook, scene breakdown, and relevant hashtags",
   "tags": ["tag1", "tag2", "tag3", "tag4", "tag5"],
   "scenes": [
     {{
       "scene_number": 1,
-      "narration": "What the voiceover says for this scene. Keep it energetic and concise.",
-      "visual_prompt": "Cinematic visual description for Google Veo AI video generation. Be descriptive with camera motion, lighting, and details.",
-      "estimated_duration_sec": 5
+      "narration": "Dramatic movie trailer voiceover text for this scene (concise, high impact).",
+      "visual_prompt": "Hyper-realistic cinematic shot description. Mention characters, lighting, environment, and 8k cinematic details.",
+      "estimated_duration_sec": 6
     }}
   ]
 }}
 
 Number of scenes:
 - For 'shorts': 4 to 6 scenes (total ~30-45 seconds).
-- For 'standard': 6 to 10 scenes (total ~60-90 seconds).
+- For 'standard': 6 to 8 scenes (total ~60-90 seconds).
 """
 
     prompt = f"Topic: {topic}\nFormat: {format_type}\nGenerate the complete YouTube script and Veo visual prompts."

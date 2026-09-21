@@ -238,13 +238,13 @@ with tab_create:
     
     col_input, col_config = st.columns([3, 2])
     
-    with col_input:
         sample_topics = [
-            "Top 5 Mind-Blowing Facts About Black Holes",
-            "Why the Ocean is Still 80% Unexplored",
-            "How AI is Revolutionizing Medicine in 2026",
-            "3 Ancient Discoveries Scientists Cannot Explain",
-            "What Actually Happens When You Sleep?"
+            "Kalki Avatar: The Fiery End of Kali Yuga and the Rebirth of the Golden Age",
+            "The 4 Yugas Explained: From Divine Gods in Satya Yuga to Chaos in Kali Yuga",
+            "The 7 Immortals (Chiranjeevis) Still Secretly Walking Among Us in 2026",
+            "Kurukshetra: The Untold Cosmic War Where Celestial Weapons Shook the Earth",
+            "Lord Shiva's Tandava: The Cosmic Dance That Destroys and Creates Universes",
+            "Ancient Flying Vimanas and Lost High-Tech Metallurgy of the Vedic Era"
         ]
         
         selected_sample = st.selectbox("Quick Topic Inspiration:", ["-- Select or type custom below --"] + sample_topics)
@@ -253,8 +253,8 @@ with tab_create:
         topic = st.text_area(
             "Video Topic / Concept",
             value=initial_topic,
-            placeholder="e.g., Mind-bending paradoxes that break modern physics...",
-            help="Provide any topic, idea, or script prompt you'd like to turn into a video."
+            placeholder="e.g., An epic movie trailer about Kalki Avatar descending on a white winged horse with a blazing fiery sword to end the darkness of Kali Yuga...",
+            help="Provide any topic, idea, or movie-style prompt you'd like to turn into a video."
         )
 
     with col_config:
